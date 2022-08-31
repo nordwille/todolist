@@ -1,0 +1,23 @@
+.left-menu {
+    display: block;
+    width: 300px;
+    background-color:#81e2a5b4;
+    list-style-type: none;
+}
+
+.left-menu .ulMenu{
+    padding-top: 20px;
+    list-style-type: none;
+}
+.left-menu .incoming{
+    padding-top: 10px;
+}
+.left-menu .today{
+    padding-top: 10px;
+}
+.left-menu .forthcoming{
+    padding-top: 10px;
+}
+.left-menu .filter{
+    padding-top: 10px;
+}
