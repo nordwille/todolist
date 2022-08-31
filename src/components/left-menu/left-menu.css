@@ -1,17 +1,16 @@
 .left-menu {
-    display: block;
-    width: 300px;
-    background-color:#81e2a5b4;
+    display: block;    
+    padding-top: 35px;
+    width: 290px;       
+    background:#bddbbd;
     list-style-type: none;
 }
-
 .left-menu .ulMenu{
-    padding-top: 20px;
     list-style-type: none;
-}
+} 
 .left-menu .incoming{
     padding-top: 10px;
-}
+} 
 .left-menu .today{
     padding-top: 10px;
 }

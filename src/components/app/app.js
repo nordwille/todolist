@@ -7,8 +7,8 @@ import ViewContent from '../view-content/view-content';
         return (
             <div className="app">
                 <Header/>
-                <ViewContent/>
-                <LeftMenu/>                
+                <LeftMenu/>
+                <ViewContent/>                
             </div>
         )
     }
