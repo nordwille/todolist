@@ -8,7 +8,7 @@ const LeftMenu = () => {
         <li className="incoming">
           <a href="//https">
             <i className="fa-solid fa-inbox">
-              <i>&nbsp;&nbsp;Входящие</i>
+              <i className="text">&nbsp;&nbsp;Входящие</i>
             </i>
           </a>
         </li>
@@ -16,7 +16,7 @@ const LeftMenu = () => {
         <li className="today">
           <a href="//https">
             <i className="fa-solid fa-calendar-day">
-              <i>&nbsp;&nbsp;Сегодня</i>
+              <i className="text">&nbsp;&nbsp;Сегодня</i>
             </i>
           </a>
         </li>
@@ -24,7 +24,7 @@ const LeftMenu = () => {
         <li className="forthcoming">
           <a href="//https">
             <i className="fa-solid fa-calendar-days">
-              <i>&nbsp;&nbsp;Предстоящие</i>
+              <i className="text">&nbsp;&nbsp;Предстоящие</i>
             </i>
           </a>
         </li>
@@ -32,7 +32,7 @@ const LeftMenu = () => {
         <li className="filter">
           <a href="//https">
             <i className="fa-solid fa-filter">
-              <i>&nbsp;&nbsp;Фильтры и метки</i>
+              <i className="text">&nbsp;&nbsp;Фильтры и метки</i>
             </i>
           </a>
         </li>

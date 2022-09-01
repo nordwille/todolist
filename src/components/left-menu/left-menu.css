@@ -20,3 +20,14 @@
 .left-menu .filter{
     padding-top: 10px;
 }
+
+.left-menu .ulMenu i{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: rgb(16, 61, 32);
+}
+.left-menu .ulMenu .text{
+    color: rgb(16, 61, 32);
+    text-decoration: none;
+    font-family: sans-serif;
+}

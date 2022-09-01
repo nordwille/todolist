@@ -13,7 +13,7 @@ const AccordionProjects = () => {
             aria-expanded="false"
             aria-controls="collapseTwo"
           >
-            Проекты
+            <b>Проекты</b>
           </button>
         </h2>
         <div

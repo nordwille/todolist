@@ -1,3 +1,8 @@
 .accordion-item .accordion-button{
     background-color:#bddbbd;
+    color: rgb(16, 61, 32);
+}
+.accordion-item .accordion-button b {
+    margin-left: 11px;
+    font-size: 18px;
 }
