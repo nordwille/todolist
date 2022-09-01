@@ -1,40 +1,41 @@
 import AccordionProjects from "./accordion-projects/accordion-projects";
 import "./left-menu.css";
+import { Link } from "react-router-dom";
 
 const LeftMenu = () => {
   return (
     <nav className="left-menu">
       <ul className="ulMenu">
         <li className="incoming">
-          <a href="//https">
+          <Link to="/incoming">
             <i className="fa-solid fa-inbox">
               <i className="text">&nbsp;&nbsp;Входящие</i>
             </i>
-          </a>
+          </Link>
         </li>
 
         <li className="today">
-          <a href="//https">
+          <Link to="/today">
             <i className="fa-solid fa-calendar-day">
               <i className="text">&nbsp;&nbsp;Сегодня</i>
             </i>
-          </a>
+          </Link>
         </li>
 
         <li className="forthcoming">
-          <a href="//https">
+          <Link to="/forthcoming">
             <i className="fa-solid fa-calendar-days">
               <i className="text">&nbsp;&nbsp;Предстоящие</i>
             </i>
-          </a>
+          </Link>
         </li>
 
         <li className="filter">
-          <a href="//https">
+          <Link to="/filter">
             <i className="fa-solid fa-filter">
               <i className="text">&nbsp;&nbsp;Фильтры и метки</i>
             </i>
-          </a>
+          </Link>
         </li>
       </ul>
       <AccordionProjects />
