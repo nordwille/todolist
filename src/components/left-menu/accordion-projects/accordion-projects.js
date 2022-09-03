@@ -4,22 +4,18 @@ const AccordionProjects = () => {
   return (
     <div className="accordion" id="accordionExample">
       <div className="accordion-item">
-        <h2 className="accordion-header" id="headingTwo">
-          <button
-            className="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo"
-            aria-expanded="false"
-            aria-controls="collapseTwo"
-          >
-            <b>Проекты</b>
-          </button>
-        </h2>
+        <div
+          className="accordion-button collapsed"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseTwo"
+          aria-controls="collapseTwo"
+        >
+          <b>Проекты</b>
+        </div>
+
         <div
           id="collapseTwo"
           className="accordion-collapse collapse"
-          aria-labelledby="headingTwo"
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">

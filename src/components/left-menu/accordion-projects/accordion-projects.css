@@ -1,3 +1,10 @@
+.accordion-item{
+    margin: 0;
+    border: #bddbbd;
+    border-radius: 0%;
+    padding: 0;
+}
+
 .accordion-item .accordion-button{
     background-color:#bddbbd;
     color: rgb(16, 61, 32);
@@ -5,4 +12,11 @@
 .accordion-item .accordion-button b {
     margin-left: 11px;
     font-size: 18px;
+}
+.accordion-body{
+    background-color:#bddbbd;
+    color: rgb(16, 61, 32);
+}
+.accordion-button{
+    cursor: pointer;
 }
