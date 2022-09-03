@@ -1,7 +1,8 @@
 .left-menu {
+    position: relative;
     display: block;    
     padding-top: 35px;
-    width: 290px;       
+    width: 290px;   
     background:#bddbbd;
     list-style-type: none;
 }

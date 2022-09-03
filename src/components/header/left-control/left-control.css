@@ -3,7 +3,7 @@
     width: 350px;
 }
 
-.menu {
+.burger-menu-button {
     color: rgb(16, 61, 32);
     display: inline-block;
     margin-top: 12px;
@@ -11,11 +11,9 @@
     cursor: pointer;
 }
 
-.home {
-    color: rgb(16, 61, 32);
+.left-control .home-button {
     display: inline-block;
+    color: rgb(16, 61, 32);
     margin-right: 15px;
     cursor: pointer;
 }
-
-
