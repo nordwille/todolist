@@ -1,26 +1,19 @@
 .left-menu { 
+    display: flex;
     padding-top: 35px;
     padding-left: 3px;
     margin-right: 20px;
-    flex-basis: 350px;   
+    flex-basis: 353px;
     height: 100vh;
     background:#bddbbd;
     list-style-type: none;
 }
 .left-menu .ulMenu{
+    position: fixed;
     list-style-type: none;
 } 
-.left-menu .incoming{
-    padding-top: 10px;
-} 
-.left-menu .today{
-    padding-top: 10px;
-}
-.left-menu .forthcoming{
-    padding-top: 10px;
-}
-.left-menu .filter{
-    padding-top: 10px;
+.left-menu li{
+    padding-top: 15px;
 }
 
 .left-menu .ulMenu i{
@@ -29,7 +22,13 @@
     color: rgb(16, 61, 32);
 }
 .left-menu .ulMenu .text{
+    font-size: 17px;
     color: rgb(16, 61, 32);
     text-decoration: none;
     font-family: sans-serif;
+}
+.left-menu .ulMenu .accordion{
+    list-style-position:inside;
+    position: absolute;
+    width: 280px;
 }

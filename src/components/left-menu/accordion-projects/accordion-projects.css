@@ -1,4 +1,5 @@
 .accordion-item{
+    display: block;
     margin: 0;
     border: #bddbbd;
     border-radius: 0%;
@@ -14,6 +15,7 @@
     font-size: 18px;
 }
 .accordion-body{
+    max-width: 350px;
     background-color:#bddbbd;
     color: rgb(16, 61, 32);
 }

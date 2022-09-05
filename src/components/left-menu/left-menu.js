@@ -13,7 +13,6 @@ const LeftMenu = () => {
             </i>
           </Link>
         </li>
-
         <li className="today">
           <Link to="/today">
             <i className="fa-solid fa-calendar-day">
@@ -21,7 +20,6 @@ const LeftMenu = () => {
             </i>
           </Link>
         </li>
-
         <li className="forthcoming">
           <Link to="/forthcoming">
             <i className="fa-solid fa-calendar-days">
@@ -29,7 +27,6 @@ const LeftMenu = () => {
             </i>
           </Link>
         </li>
-
         <li className="filter">
           <Link to="/filter">
             <i className="fa-solid fa-filter">
@@ -37,8 +34,11 @@ const LeftMenu = () => {
             </i>
           </Link>
         </li>
+        <i>
+          <AccordionProjects />
+        </i>
+        <div className="accordion"></div>
       </ul>
-      <AccordionProjects />
     </nav>
   );
 };

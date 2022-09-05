@@ -6,7 +6,7 @@ import Incoming from "../pages/incoming/incoming";
 import Today from "../pages/today/today";
 import Forthcoming from "../pages/forthcoming/forthcoming";
 import Filter from "../pages/filter/filter";
-import "../pages/view-content.css";
+import "../pages/view.css";
 
 function App() {
   return (
