@@ -5,10 +5,15 @@ import { Link } from "react-router-dom";
 const LeftControl = () => {
   function showLeftMenu() {
     const leftMenu = document.querySelector(".left-menu");
+    const viewContent = document.querySelector(".view-content");
     if (leftMenu.style.display === "block") {
       leftMenu.style.display = "none";
+      viewContent.style.paddingLeft = "150px";
+      viewContent.style.paddingRight = "150px";
     } else {
       leftMenu.style.display = "block";
+      viewContent.style.paddingLeft = "75px";
+      viewContent.style.paddingRight = "75px";
     }
   }
   return (

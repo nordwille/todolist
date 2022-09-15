@@ -3,3 +3,27 @@
     font-size: 19px;
     color: gray;
 }
+.add-Task{
+    position: fixed;
+    display: flex;
+    padding-left: 75px;
+    cursor: pointer;
+    padding-top: 15px;
+}
+.add-Task b{
+    padding-left: 10px;
+}
+.task-list-today{
+    position: relative;
+    display: none;
+    padding-left: 89px;
+    height: 100px;
+    width: 700px;
+}
+.button-create-task-today{
+    display: flex;
+    justify-content: space-between;
+}
+.allTaskToday p{
+    margin-left: 20px;
+}

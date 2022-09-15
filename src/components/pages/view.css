@@ -1,13 +1,16 @@
 .view-header{
-    padding: 36px 55px 36px 70px;
+    padding: 36px 55px 20px 70px;
     margin-top: 0;
     position: fixed;
     display: block;
     width: 100%;
     background-color: rgb(255, 255, 255);
 }
-.view-content p{
+.view-content p {
     padding-left: 75px;
-    padding-top: 130px;
+    padding-top: 140px;
     font-size: 17px;    
+}
+.view-header h1{
+    padding-left: 15px;
 }
