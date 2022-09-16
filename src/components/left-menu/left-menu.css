@@ -1,15 +1,16 @@
 .left-menu { 
+    position: fixed;
     display: none;
-    padding-top: 35px;
+    padding-top: 65px;
     padding-left: 3px;
     margin-right: 20px;
     width: 400px;
-    height: 100vh;
+    height: 100%;
     background:#bddbbd;
     list-style-type: none;
 }
 .left-menu .ulMenu{
-    position: fixed;
+    
     list-style-type: none;
 } 
 .left-menu li{

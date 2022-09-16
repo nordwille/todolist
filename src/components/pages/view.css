@@ -1,4 +1,5 @@
 .view-header{
+    z-index: 5;
     padding: 36px 55px 20px 70px;
     margin-top: 0;
     position: fixed;
@@ -8,9 +9,13 @@
 }
 .view-content p {
     padding-left: 75px;
-    padding-top: 140px;
+    padding-top: 150px;
     font-size: 17px;    
 }
 .view-header h1{
+    padding-top: 40px;
     padding-left: 15px;
+}
+.view-content{
+    padding-left: 150px;
 }

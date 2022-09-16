@@ -2,6 +2,7 @@
     font-family:'Roboto' sans-serif;
     font-size: 19px;
     color: gray;
+    
 }
 .add-Task{
     position: fixed;
@@ -16,14 +17,11 @@
 .task-list-today{
     position: relative;
     display: none;
-    padding-left: 89px;
-    height: 100px;
-    width: 700px;
+    padding-left: 72px;
+    width: 905px;
 }
 .button-create-task-today{
     display: flex;
     justify-content: space-between;
 }
-.allTaskToday p{
-    margin-left: 20px;
-}
+

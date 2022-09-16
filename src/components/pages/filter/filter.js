@@ -6,13 +6,11 @@ const Filter = () => {
       <div className="view-header">
         <h1>Фильтры и Метки</h1>
       </div>
-      <div className="view-content">
-        <p>
-          Cupiditate impedit voluptates neque nostrum delectus aperiam
-          consequuntur iure! Qui quos, non libero illum vitae, labore nulla, ea
-          omnis reiciendis exercitationem doloribus.
-        </p>
-      </div>
+      <p>
+        Cupiditate impedit voluptates neque nostrum delectus aperiam
+        consequuntur iure! Qui quos, non libero illum vitae, labore nulla, ea
+        omnis reiciendis exercitationem doloribus.
+      </p>
     </div>
   );
 };

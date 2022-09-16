@@ -1,7 +1,7 @@
 header {
-    position: sticky;
-    top:0;
     display: block;
+    position: fixed;
+    top:0;
     z-index: 100;
          -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
           box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);

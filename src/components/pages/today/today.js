@@ -28,7 +28,7 @@ const Today = () => {
     } else {
       addTask.style.display = "none";
       taskListToday.style.display = "block";
-      taskListToday.style.position = "fixed";
+      taskListToday.style.position = "relative";
     }
   };
 
@@ -41,11 +41,23 @@ const Today = () => {
       descriptionOfTask = document.getElementById(
         "input-today-list-description"
       ).value;
-      let task1Name = document.getElementById("task1Name");
-      let task1Descr = document.getElementById("task1Descr");
+      const allTaskToday = document.querySelector(".all-task-today");
       if (nameOfTask || descriptionOfTask) {
-        task1Name.innerHTML = nameOfTask;
-        task1Descr.innerHTML = descriptionOfTask;
+        let br = document.createElement("br");
+        let hr = document.createElement("hr");
+        hr.style.width = "825px";
+        let dateSpanName = document.createElement("li");
+        dateSpanName.style.maxWidth = "850px";
+        let dateSpanDescr = document.createElement("li");
+        dateSpanDescr.style.maxWidth = "850px";
+
+        dateSpanName.innerHTML = nameOfTask;
+        allTaskToday.appendChild(dateSpanName);
+        dateSpanDescr.innerHTML = descriptionOfTask;
+        allTaskToday.appendChild(dateSpanDescr);
+        allTaskToday.appendChild(hr);
+        allTaskToday.appendChild(br);
+
         document.getElementById("input-today-list-name").value = "";
         document.getElementById("input-today-list-description").value = "";
       }
@@ -61,59 +73,53 @@ const Today = () => {
           Сегодня <samp>{dateFormatingToday()}</samp>
         </h1>
       </div>
-      <div className="view-content">
-        <div className="allTaskToday">
-          <p>
-            <span id="task1Name"></span>
-            <br></br>
-            <span id="task1Descr"></span>
-          </p>
-        </div>
+      <div>
+        <p className="all-task-today"></p>
+      </div>
 
-        <div className="add-Task">
-          <i className="fa-solid fa-plus">
-            <b onClick={showTaskListToday}>Добавить задачу на Сегодня</b>
-          </i>
+      <div className="add-Task">
+        <i className="fa-solid fa-plus">
+          <b onClick={showTaskListToday}>Добавить задачу на Сегодня</b>
+        </i>
+      </div>
+      <div className="task-list-today">
+        <div className="mb-3">
+          <label
+            htmlFor="exampleFormControlInput1"
+            className="form-label"
+          ></label>
+          <input
+            type="text"
+            className="form-control"
+            id="input-today-list-name"
+            placeholder="Название задачи"
+          ></input>
         </div>
-        <div className="task-list-today">
-          <div className="mb-3">
-            <label
-              htmlFor="exampleFormControlInput1"
-              className="form-label"
-            ></label>
-            <input
-              type="text"
-              className="form-control"
-              id="input-today-list-name"
-              placeholder="Название задачи"
-            ></input>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="exampleFormControlTextarea1" className="form-label">
-              Описание задачи
-            </label>
-            <textarea
-              className="form-control"
-              id="input-today-list-description"
-              rows="3"
-            ></textarea>
-          </div>
-          <div className="button-create-task-today">
-            <button
-              onClick={taskToday.createTaskToday}
-              type="button"
-              className="btn btn-success"
-            >
-              Добавить
-            </button>
-            <button
-              onClick={closeTaskListToday}
-              type="button"
-              className="btn btn-danger"
-            >
-              Отменить
-            </button>
-          </div>
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlTextarea1" className="form-label">
+            Описание задачи
+          </label>
+          <textarea
+            className="form-control"
+            id="input-today-list-description"
+            rows="3"
+          ></textarea>
+        </div>
+        <div className="button-create-task-today">
+          <button
+            onClick={taskToday.createTaskToday}
+            type="button"
+            className="btn btn-success"
+          >
+            Добавить
+          </button>
+          <button
+            onClick={closeTaskListToday}
+            type="button"
+            className="btn btn-danger"
+          >
+            Отменить
+          </button>
         </div>
       </div>
     </div>

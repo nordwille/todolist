@@ -9,10 +9,10 @@ const LeftControl = () => {
     if (leftMenu.style.display === "block") {
       leftMenu.style.display = "none";
       viewContent.style.paddingLeft = "150px";
-      viewContent.style.paddingRight = "150px";
+      viewContent.style.paddingRight = "450px";
     } else {
       leftMenu.style.display = "block";
-      viewContent.style.paddingLeft = "75px";
+      viewContent.style.paddingLeft = "450px";
       viewContent.style.paddingRight = "75px";
     }
   }
