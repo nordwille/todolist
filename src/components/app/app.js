@@ -12,16 +12,14 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <div className="container-content">
-        <LeftMenu />
-        <div className="view-content">
-          <Routes>
-            <Route path="/incoming" element={<Incoming />} />
-            <Route path="/today" element={<Today />} />
-            <Route path="/forthcoming" element={<Forthcoming />} />
-            <Route path="/filter" element={<Filter />} />
-          </Routes>
-        </div>
+      <LeftMenu />
+      <div className="view-content">
+        <Routes>
+          <Route path="/incoming" element={<Incoming />} />
+          <Route path="/today" element={<Today />} />
+          <Route path="/forthcoming" element={<Forthcoming />} />
+          <Route path="/filter" element={<Filter />} />
+        </Routes>
       </div>
     </div>
   );

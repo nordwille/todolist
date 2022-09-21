@@ -10,6 +10,9 @@
     margin-right: 15px;
     cursor: pointer;
 }
+.burger-menu-button:hover{
+    color:rgb(56, 122, 11);
+}
 
 .left-control .home-button {
     display: inline-block;
@@ -17,3 +20,8 @@
     margin-right: 15px;
     cursor: pointer;
 }
+
+.left-control .home-button:hover{
+    color:rgb(56, 122, 11);
+}
+

@@ -6,12 +6,12 @@ const LeftControl = () => {
   function showLeftMenu() {
     const leftMenu = document.querySelector(".left-menu");
     const viewContent = document.querySelector(".view-content");
-    if (leftMenu.style.display === "block") {
+    if (leftMenu.style.display === "flex") {
       leftMenu.style.display = "none";
       viewContent.style.paddingLeft = "150px";
       viewContent.style.paddingRight = "450px";
     } else {
-      leftMenu.style.display = "block";
+      leftMenu.style.display = "flex";
       viewContent.style.paddingLeft = "450px";
       viewContent.style.paddingRight = "75px";
     }

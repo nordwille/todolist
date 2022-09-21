@@ -1,16 +1,37 @@
 import "./forthcoming.css";
+import { CaledarGrid } from "../../calendar/calendar";
 
 const Forthcoming = () => {
+  function dateFormatingToday() {
+    let date = new Date();
+    const options = {
+      year: "numeric",
+      month: "long",
+    };
+    return date.toLocaleDateString("ru-RU", options);
+  }
+
   return (
-    <div className="container">
+    <div className="content-forthcoming">
       <div className="view-header">
-        <h1>Предстоящие</h1>
+        <h1>
+          <button className="header-cal">{dateFormatingToday()}</button>
+        </h1>
+        <div className="forth-coming-cal-line">
+          <div className="row">
+            <button className="day col-1"></button>
+            <button className="day col-1"></button>
+            <button className="day col-1"></button>
+            <button className="day col-1"></button>
+            <button className="day col-1"></button>
+            <button className="day col-1"></button>
+            <button className="day col-1"></button>
+          </div>
+        </div>
       </div>
-      <p>
-        Cupiditate impedit voluptates neque nostrum delectus aperiam
-        consequuntur iure! Qui quos, non libero illum vitae, labore nulla, ea
-        omnis reiciendis exercitationem doloribus.
-      </p>
+      <div className="calendar">
+        <CaledarGrid />
+      </div>
     </div>
   );
 };

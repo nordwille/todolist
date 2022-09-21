@@ -1,7 +1,7 @@
 import "./incoming.css";
 const Incoming = () => {
   return (
-    <div className="container">
+    <div className="content-incoming">
       <div className="view-header">
         <h1>Входящие</h1>
       </div>

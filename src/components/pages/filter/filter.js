@@ -2,7 +2,7 @@ import "./filter.css";
 
 const Filter = () => {
   return (
-    <div className="container">
+    <div className="content-filter">
       <div className="view-header">
         <h1>Фильтры и Метки</h1>
       </div>

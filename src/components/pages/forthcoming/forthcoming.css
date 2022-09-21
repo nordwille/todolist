@@ -1,0 +1,7 @@
+.calendar{
+    padding-top: 200px;
+    display: grid;
+    grid-template-columns:repeat(7,25px);
+    grid-template-rows: (6, 25px);
+    background: green;
+}

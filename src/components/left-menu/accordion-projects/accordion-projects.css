@@ -1,6 +1,6 @@
 .accordion-item{
     display: block;
-    margin: 0;
+    margin-top: 20px;
     border: #bddbbd;
     border-radius: 0%;
     padding: 0;
@@ -20,5 +20,9 @@
     color: rgb(16, 61, 32);
 }
 .accordion-button{
+    transition: 0.3s all;
     cursor: pointer;
+}
+.accordion-button:hover{
+    color:rgb(56, 122, 11);
 }

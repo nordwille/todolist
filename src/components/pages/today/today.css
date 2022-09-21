@@ -7,21 +7,37 @@
 .add-Task{
     position: fixed;
     display: flex;
+    padding-top: 120px;
     padding-left: 75px;
     cursor: pointer;
-    padding-top: 15px;
+    transition: 0.3s all;
+}
+.add-Task:hover{
+    color: rgb(18, 77, 38); 
+    font-size: 19px;
 }
 .add-Task b{
+    font-size: 17px;
     padding-left: 10px;
 }
 .task-list-today{
     position: relative;
     display: none;
     padding-left: 72px;
-    width: 905px;
+    width: 825px;
 }
 .button-create-task-today{
     display: flex;
     justify-content: space-between;
+}
+
+.all-task-today{
+    display: block;
+    padding-top: 120px;
+    height: 100%;
+    width: 100%;
+}
+.list{
+    padding-left: 75px;
 }
 
