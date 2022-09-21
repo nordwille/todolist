@@ -14,11 +14,13 @@ const LeftMenu = () => {
           </Link>
         </li>
         <li className="today">
-          <Link to="/today">
-            <i className="fa-solid fa-calendar-day">
-              <i className="text">&nbsp;&nbsp;Сегодня</i>
-            </i>
-          </Link>
+          <div className="today-hover">
+            <Link to="/today">
+              <i className="fa-solid fa-calendar-day">
+                <i className="text">&nbsp;&nbsp;Сегодня</i>
+              </i>
+            </Link>
+          </div>
         </li>
         <li className="forthcoming">
           <Link to="/forthcoming">

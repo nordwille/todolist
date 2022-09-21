@@ -6,7 +6,6 @@
 }
 .add-Task{
     position: fixed;
-    display: flex;
     padding-top: 120px;
     padding-left: 75px;
     cursor: pointer;

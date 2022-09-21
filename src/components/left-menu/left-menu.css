@@ -16,6 +16,9 @@
 .left-menu li{
     padding-top: 25px;
 }
+.left-menu li{
+    padding-top: 25px;
+}
 
 .left-menu .ulMenu i{
     transition: 0.3s all;
@@ -32,9 +35,6 @@
     text-decoration: none;
     font-family: sans-serif;
     transition: 0.5s all;
-}
-.left-menu .ulMenu .text:hover{
-    color:rgb(56, 122, 11);
 }
 .left-menu .ulMenu .accordion{
     list-style-position:inside;

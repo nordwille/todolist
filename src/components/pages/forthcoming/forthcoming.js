@@ -1,5 +1,5 @@
 import "./forthcoming.css";
-import { CaledarGrid } from "../../calendar/calendar";
+import { Calendar } from "../../calendar/calendar";
 
 const Forthcoming = () => {
   function dateFormatingToday() {
@@ -30,7 +30,7 @@ const Forthcoming = () => {
         </div>
       </div>
       <div className="calendar">
-        <CaledarGrid />
+        <Calendar />
       </div>
     </div>
   );
