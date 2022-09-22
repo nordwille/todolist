@@ -10,7 +10,7 @@ const GridWrapper = styled.div`
 `;
 const CellWrapper = styled.div`
   min-width: 50px;
-  min-height: 50px;
+  min-height: 75px;
   color: rgb(18, 77, 38);
   background-color: ${(props) => (props.isWeekend ? "#81e2a5" : "#bddbbd")};
 `;
@@ -47,7 +47,7 @@ const CalendarGrid = ({ startDay }) => {
     <GridWrapper>
       {daysArray.map((dayItem) => (
         <CellWrapper
-          key={dayItem.format("DDMMYYYY")}
+          key={dayItem.unix()}
           isWeekend={dayItem.day() === 6 || dayItem.day() === 0}
         >
           <RowInCell justifyContent={"flex-end"}>
