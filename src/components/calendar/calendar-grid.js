@@ -4,13 +4,14 @@ import moment from "moment/moment";
 const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 1fr);
   grid-gap: 1px;
-  background-color: rgb(18, 77, 38);
+  background-color: ${(props) =>
+    props.isHeader ? "#bddbbd" : "rgb(18, 77, 38)"};
+  ${(props) => props.isHeader && "border-bottom: 1px solid rgb(18, 77, 38)"}
 `;
 const CellWrapper = styled.div`
   min-width: 50px;
-  min-height: 75px;
+  min-height: ${(props) => (props.isHeader ? 24 : 64)}px;
   color: rgb(18, 77, 38);
   background-color: ${(props) => (props.isWeekend ? "#81e2a5" : "#bddbbd")};
 `;
@@ -18,6 +19,7 @@ const RowInCell = styled.div`
   display: flex;
   justify-content: ${(props) =>
     props.justifyContent ? props.justifyContent : "flex-start"};
+  ${(props) => props.pr && `padding-right: ${props.pr * 8}px`}
 `;
 const DayWrapper = styled.div`
   height: 25px;
@@ -44,23 +46,37 @@ const CalendarGrid = ({ startDay }) => {
   const day = startDay.clone().subtract(1, "day");
   const daysArray = [...Array(42)].map(() => day.add(1, "day").clone());
   return (
-    <GridWrapper>
-      {daysArray.map((dayItem) => (
-        <CellWrapper
-          key={dayItem.unix()}
-          isWeekend={dayItem.day() === 6 || dayItem.day() === 0}
-        >
-          <RowInCell justifyContent={"flex-end"}>
-            <DayWrapper>
-              {!isCurrentDay(dayItem) && dayItem.format("D")}
-              {isCurrentDay(dayItem) && (
-                <CurrentDay>{dayItem.format("D")}</CurrentDay>
-              )}
-            </DayWrapper>
-          </RowInCell>
-        </CellWrapper>
-      ))}
-    </GridWrapper>
+    <>
+      <GridWrapper isHeader>
+        {[...Array(7)].map((_, i) => (
+          <CellWrapper isHeader>
+            <RowInCell justifyContent={"flex-end"} pr={1}>
+              {moment()
+                .day(i + 1)
+                .format("ddd")}
+            </RowInCell>
+          </CellWrapper>
+        ))}
+      </GridWrapper>
+
+      <GridWrapper>
+        {daysArray.map((dayItem) => (
+          <CellWrapper
+            key={dayItem.unix()}
+            isWeekend={dayItem.day() === 6 || dayItem.day() === 0}
+          >
+            <RowInCell justifyContent={"flex-end"}>
+              <DayWrapper>
+                {!isCurrentDay(dayItem) && dayItem.format("D")}
+                {isCurrentDay(dayItem) && (
+                  <CurrentDay>{dayItem.format("D")}</CurrentDay>
+                )}
+              </DayWrapper>
+            </RowInCell>
+          </CellWrapper>
+        ))}
+      </GridWrapper>
+    </>
   );
 };
 export { CalendarGrid };
