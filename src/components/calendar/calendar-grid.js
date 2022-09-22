@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import moment from "moment/moment";
 
 const GridWrapper = styled.div`
   display: grid;
@@ -24,7 +25,19 @@ const DayWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 2px;
 `;
+const CurrentDay = styled.div`
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: yellow;
+`;
+
+const isCurrentDay = (day) => moment().isSame(day, "day");
 
 const CalendarGrid = ({ startDay }) => {
   const totalDays = 42;
@@ -38,7 +51,12 @@ const CalendarGrid = ({ startDay }) => {
           isWeekend={dayItem.day() === 6 || dayItem.day() === 0}
         >
           <RowInCell justifyContent={"flex-end"}>
-            <DayWrapper>{dayItem.format("D")}</DayWrapper>
+            <DayWrapper>
+              {!isCurrentDay(dayItem) && dayItem.format("D")}
+              {isCurrentDay(dayItem) && (
+                <CurrentDay>{dayItem.format("D")}</CurrentDay>
+              )}
+            </DayWrapper>
           </RowInCell>
         </CellWrapper>
       ))}

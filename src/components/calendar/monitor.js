@@ -25,8 +25,8 @@ const ButtonWraper = styled("button")`
   height: 24px;
   margin-right: 2px;
   border-radius: 4px;
-  background-color: #81e2a5;
   line-height: 4px;
+  background-color: #81e2a5;
   color: rgb(18, 77, 38);
 `;
 
