@@ -8,8 +8,8 @@ const LeftControl = () => {
     const viewContent = document.querySelector(".view-content");
     if (leftMenu.style.display === "flex") {
       leftMenu.style.display = "none";
-      viewContent.style.paddingLeft = "150px";
-      viewContent.style.paddingRight = "450px";
+      viewContent.style.paddingLeft = "75px";
+      viewContent.style.paddingRight = "75px";
     } else {
       leftMenu.style.display = "flex";
       viewContent.style.paddingLeft = "450px";
