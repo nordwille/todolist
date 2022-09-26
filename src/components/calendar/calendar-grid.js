@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import moment from "moment/moment";
+import React from "react";
 
 const GridWrapper = styled.div`
   display: grid;
@@ -11,7 +12,7 @@ const GridWrapper = styled.div`
 `;
 const CellWrapper = styled.div`
   min-width: 50px;
-  min-height: ${(props) => (props.isHeader ? 24 : 64)}px;
+  min-height: ${(props) => (props.isHeader ? 24 : 72)}px;
   background-color: ${(props) => (props.isWeekend ? "#81e2a5" : "#bddbbd")};
   font-size: 18px;
   font-weight: bold;
@@ -20,6 +21,7 @@ const CellWrapper = styled.div`
 `;
 const RowInCell = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: ${(props) =>
     props.justifyContent ? props.justifyContent : "flex-start"};
   ${(props) => props.pr && `padding-right: ${props.pr * 8}px`}
@@ -41,12 +43,32 @@ const CurrentDay = styled.div`
   align-items: center;
   background-color: yellow;
 `;
+const ShowDayWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+const EventListWrapper = styled.ul`
+  margin: unset;
+  padding-left: 4px;
+`;
+const EventItemWrapper = styled.button`
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 126px;
+  border: unset;
+  background: unset;
+  color: rgb(18, 77, 38);
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font-size: 16px;
+`;
 
-const CalendarGrid = ({ startDay, today }) => {
-  const totalDays = 42;
+const CalendarGrid = ({ startDay, today, totalDays, events }) => {
   const day = startDay.clone().subtract(1, "day");
-  const daysArray = [...Array(42)].map(() => day.add(1, "day").clone());
 
+  const daysArray = [...Array(totalDays)].map(() => day.add(1, "day").clone());
   const isCurrentDay = (day) => moment().isSame(day, "day");
   const isSelectedMonth = (day) => today.isSame(day, "month");
 
@@ -72,12 +94,29 @@ const CalendarGrid = ({ startDay, today }) => {
             isSelectedMonth={isSelectedMonth(dayItem)}
           >
             <RowInCell justifyContent={"flex-end"}>
-              <DayWrapper>
-                {!isCurrentDay(dayItem) && dayItem.format("D")}
-                {isCurrentDay(dayItem) && (
-                  <CurrentDay>{dayItem.format("D")}</CurrentDay>
-                )}
-              </DayWrapper>
+              <ShowDayWrapper>
+                <DayWrapper>
+                  {isCurrentDay(dayItem) ? (
+                    <CurrentDay>{dayItem.format("D")}</CurrentDay>
+                  ) : (
+                    dayItem.format("D")
+                  )}
+                </DayWrapper>
+              </ShowDayWrapper>
+
+              <EventListWrapper>
+                {events
+                  .filter(
+                    (event) =>
+                      event.date >= dayItem.format("X") &&
+                      event.date <= dayItem.clone().endOf("day").format("X")
+                  )
+                  .map((event) => (
+                    <li key={event.id}>
+                      <EventItemWrapper>{event.title}</EventItemWrapper>
+                    </li>
+                  ))}
+              </EventListWrapper>
             </RowInCell>
           </CellWrapper>
         ))}
@@ -86,12 +125,3 @@ const CalendarGrid = ({ startDay, today }) => {
   );
 };
 export { CalendarGrid };
-
-/*
-  const endDay = moment().endOf("month").endOf("week");
-  const calendar = [];
-  
-   while (!day.isAfter(endDay)) {
-    calendar.push(day.clone());
-    day.add(1, "day");
-  }*/

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CalendarGrid } from "./calendar-grid";
 import moment from "moment/moment";
 import "moment/locale/ru";
@@ -7,6 +7,8 @@ import { Monitor } from "./monitor";
 import { Title } from "./title";
 import { useState } from "react";
 
+const url = "http://localhost:5000";
+const totalDays = 42;
 const ShadowWraper = styled("div")`
   border-top: 1px solid #737374;
   border-left: 1px solid #464648;
@@ -32,6 +34,20 @@ const Calendar = () => {
     setToday((prev) => prev.clone().add(1, "month"));
   };
 
+  const startDateQuery = startDay.clone().format("X");
+  const endDateQuery = startDay.clone().add(totalDays, "days").format("X");
+
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+    fetch(
+      `${url}/events?date_gte=${startDateQuery}&date_lte=${endDateQuery}`
+    ).then((res) =>
+      res.json().then((res) => {
+        setEvents(res);
+      })
+    );
+  }, [endDateQuery, startDateQuery, today]);
+
   return (
     <ShadowWraper>
       <Title></Title>
@@ -41,7 +57,12 @@ const Calendar = () => {
         todayHandler={todayHandler}
         nextHandler={nextHandler}
       ></Monitor>
-      <CalendarGrid startDay={startDay} today={today} />
+      <CalendarGrid
+        startDay={startDay}
+        today={today}
+        totalDays={totalDays}
+        events={events}
+      />
     </ShadowWraper>
   );
 };

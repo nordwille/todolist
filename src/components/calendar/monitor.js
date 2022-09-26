@@ -6,7 +6,7 @@ const DivWrapper = styled("div")`
   justify-content: space-between;
   background-color: #bddbbd;
   color: rgb(18, 77, 38);
-  padding: 16px;
+  padding: 5px;
 `;
 
 const MonthWrapper = styled("span")`

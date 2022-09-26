@@ -1,5 +1,4 @@
 import "./today.css";
-let todos = require("../../../mock-data/todos/getTodos.json");
 
 const Today = () => {
   function dateFormatingToday() {
@@ -42,12 +41,6 @@ const Today = () => {
       descriptionOfTask = document.getElementById(
         "input-today-list-description"
       ).value;
-
-      const client = {
-        nameOfTask: nameOfTask,
-        descriptionOfTask: descriptionOfTask,
-      };
-      let data = JSON.stringify(client);
 
       const list = document.querySelector(".list");
       if (nameOfTask || descriptionOfTask) {
