@@ -12,7 +12,7 @@ const LeftControl = () => {
       viewContent.style.paddingRight = "26px";
     } else {
       leftMenu.style.display = "flex";
-      viewContent.style.paddingLeft = "426px";
+      viewContent.style.paddingLeft = "376px";
       viewContent.style.paddingRight = "26px";
     }
   }

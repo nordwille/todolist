@@ -11,6 +11,7 @@ const GridWrapper = styled.div`
   ${(props) => props.isHeader && "border-bottom: 1px solid rgb(18, 77, 38)"}
 `;
 const CellWrapper = styled.div`
+  padding-left: 4px;
   min-width: 50px;
   min-height: ${(props) => (props.isHeader ? 24 : 72)}px;
   background-color: ${(props) => (props.isWeekend ? "#81e2a5" : "#bddbbd")};
@@ -33,6 +34,7 @@ const DayWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin: 2px;
+  cursor: pointer;
 `;
 const CurrentDay = styled.div`
   height: 100%;
@@ -50,6 +52,7 @@ const ShowDayWrapper = styled.div`
 const EventListWrapper = styled.ul`
   margin: unset;
   padding-left: 4px;
+  list-style-type: none;
 `;
 const EventItemWrapper = styled.button`
   text-overflow: ellipsis;
@@ -65,7 +68,13 @@ const EventItemWrapper = styled.button`
   font-size: 16px;
 `;
 
-const CalendarGrid = ({ startDay, today, totalDays, events }) => {
+const CalendarGrid = ({
+  startDay,
+  today,
+  totalDays,
+  events,
+  openFormHander,
+}) => {
   const day = startDay.clone().subtract(1, "day");
 
   const daysArray = [...Array(totalDays)].map(() => day.add(1, "day").clone());
@@ -76,7 +85,7 @@ const CalendarGrid = ({ startDay, today, totalDays, events }) => {
     <>
       <GridWrapper isHeader>
         {[...Array(7)].map((_, i) => (
-          <CellWrapper isHeader isSelectedMonth>
+          <CellWrapper isHeader isSelectedMonth key={i}>
             <RowInCell justifyContent={"flex-end"} pr={1}>
               {moment()
                 .day(i + 1)
@@ -95,7 +104,7 @@ const CalendarGrid = ({ startDay, today, totalDays, events }) => {
           >
             <RowInCell justifyContent={"flex-end"}>
               <ShowDayWrapper>
-                <DayWrapper>
+                <DayWrapper onClick={() => openFormHander("Создать")}>
                   {isCurrentDay(dayItem) ? (
                     <CurrentDay>{dayItem.format("D")}</CurrentDay>
                   ) : (
@@ -113,7 +122,11 @@ const CalendarGrid = ({ startDay, today, totalDays, events }) => {
                   )
                   .map((event) => (
                     <li key={event.id}>
-                      <EventItemWrapper>{event.title}</EventItemWrapper>
+                      <EventItemWrapper
+                        onClick={() => openFormHander("Редактировать", event)}
+                      >
+                        {event.title}
+                      </EventItemWrapper>
                     </li>
                   ))}
               </EventListWrapper>

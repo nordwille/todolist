@@ -9,6 +9,11 @@ import { useState } from "react";
 
 const url = "http://localhost:5000";
 const totalDays = 42;
+const defaultEvent = {
+  title: "",
+  description: "",
+  date: moment().format("X"),
+};
 const ShadowWraper = styled("div")`
   border-top: 1px solid #737374;
   border-left: 1px solid #464648;
@@ -18,6 +23,65 @@ const ShadowWraper = styled("div")`
   overflow: hidden;
   box-shadow: 0 0 0 1px #1a1a1a, 0 8px 20px 6px #888;
 `;
+const FormPositionWrapper = styled("div")`
+  position: absolute;
+  z-index: 105;
+  background-color: rgba(0, 0, 0, 0.35);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+`;
+const FormWrapper = styled(ShadowWraper)`
+  width: 380px;
+  background-color: rgba(119, 160, 133, 0.954);
+  color: #dddddd;
+  box-shadow: unset;
+`;
+const EventTitle = styled("input")`
+  padding: 8px, 24px;
+  font-size: 18px;
+  width: 100%;
+  border: unset;
+  background-color: rgba(119, 160, 133, 0.954);
+  color: rgb(15, 63, 31);
+  outline: unset;
+  font-weight: bold;
+  border-bottom: 1px solid #464648;
+`;
+const EventBody = styled("textarea")`
+  padding: 8px, 24px;
+  font-size: 16px;
+  height: 80px;
+  width: 100%;
+  font-weight: bold;
+  border: unset;
+  background-color: rgba(119, 160, 133, 0.954);
+  color: rgb(18, 77, 38);
+
+  outline: unset;
+  border-bottom: 1px solid #464648;
+`;
+const ButtonsWrapper = styled("div")`
+  padding: 8px, 14px;
+  display: flex;
+  justify-content: flex-end;
+`;
+const ButtonCansel = styled("button")`
+  margin-bottom: 5px;
+  margin-right: 12px;
+  border: unset;
+  border-radius: 4px;
+  background: #bddbbd;
+  color: rgb(15, 63, 31);
+  font-weight: bold;
+`;
+const ButtonCreate = styled(ButtonCansel)``;
+
 const Calendar = () => {
   moment.updateLocale("ru", { week: { dow: 1 } });
   //const today = moment();
@@ -38,6 +102,11 @@ const Calendar = () => {
   const endDateQuery = startDay.clone().add(totalDays, "days").format("X");
 
   const [events, setEvents] = useState([]);
+
+  const [method, setMethod] = useState(null);
+  const [isShowForm, setShowForm] = useState(false);
+  const [event, setEvent] = useState(null);
+
   useEffect(() => {
     fetch(
       `${url}/events?date_gte=${startDateQuery}&date_lte=${endDateQuery}`
@@ -48,22 +117,89 @@ const Calendar = () => {
     );
   }, [endDateQuery, startDateQuery, today]);
 
+  const openFormHander = (methodName, eventForUpdate) => {
+    setShowForm(true);
+    setEvent(eventForUpdate || defaultEvent);
+    setMethod(methodName);
+  };
+  const canselButtonHandler = () => {
+    setShowForm(false);
+    setEvent(null);
+  };
+  const changeEventHandler = (text, field) => {
+    setEvent((prevState) => ({
+      ...prevState,
+      [field]: text,
+    }));
+  };
+
+  const eventFetchHandler = () => {
+    const fetchUrl =
+      method === `Редактировать`
+        ? `${url}/events/${event.id}`
+        : `${url}/events`;
+    const httpMethod = method === "Редактировать" ? "PATCH" : "POST";
+    fetch(fetchUrl, {
+      method: httpMethod,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(event),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (method === "Редактировать") {
+          setEvents((prevState) =>
+            prevState.map((eventEl) => (eventEl.id === res.id ? res : eventEl))
+          );
+        } else {
+          setEvents((prevState) => [...prevState, res]);
+        }
+        canselButtonHandler();
+      });
+  };
+
   return (
-    <ShadowWraper>
-      <Title></Title>
-      <Monitor
-        today={today}
-        prevHandler={prevHandler}
-        todayHandler={todayHandler}
-        nextHandler={nextHandler}
-      ></Monitor>
-      <CalendarGrid
-        startDay={startDay}
-        today={today}
-        totalDays={totalDays}
-        events={events}
-      />
-    </ShadowWraper>
+    <>
+      {isShowForm ? (
+        <FormPositionWrapper onClick={canselButtonHandler}>
+          <FormWrapper onClick={(e) => e.stopPropagation()}>
+            <EventTitle
+              value={event.title}
+              onChange={(e) => changeEventHandler(e.target.value, "title")}
+            />
+            <EventBody
+              value={event.description}
+              onChange={(e) =>
+                changeEventHandler(e.target.value, "description")
+              }
+            />
+            <ButtonsWrapper>
+              <ButtonCansel onClick={canselButtonHandler}>
+                Отменить
+              </ButtonCansel>
+              <ButtonCreate onClick={eventFetchHandler}>{method}</ButtonCreate>
+            </ButtonsWrapper>
+          </FormWrapper>
+        </FormPositionWrapper>
+      ) : null}
+      <ShadowWraper>
+        <Title></Title>
+        <Monitor
+          today={today}
+          prevHandler={prevHandler}
+          todayHandler={todayHandler}
+          nextHandler={nextHandler}
+        ></Monitor>
+        <CalendarGrid
+          startDay={startDay}
+          today={today}
+          totalDays={totalDays}
+          events={events}
+          openFormHander={openFormHander}
+        />
+      </ShadowWraper>
+    </>
   );
 };
 
