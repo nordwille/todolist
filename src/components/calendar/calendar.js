@@ -43,7 +43,7 @@ const FormWrapper = styled(ShadowWraper)`
   box-shadow: unset;
 `;
 const EventTitle = styled("input")`
-  padding: 8px, 24px;
+  padding: 4px 12px;
   font-size: 18px;
   width: 100%;
   border: unset;
@@ -54,7 +54,7 @@ const EventTitle = styled("input")`
   border-bottom: 1px solid #464648;
 `;
 const EventBody = styled("textarea")`
-  padding: 8px, 24px;
+  padding: 4px 12px;
   font-size: 16px;
   height: 80px;
   width: 100%;
@@ -62,7 +62,6 @@ const EventBody = styled("textarea")`
   border: unset;
   background-color: rgba(119, 160, 133, 0.954);
   color: rgb(18, 77, 38);
-
   outline: unset;
   border-bottom: 1px solid #464648;
 `;
@@ -117,9 +116,9 @@ const Calendar = () => {
     );
   }, [endDateQuery, startDateQuery, today]);
 
-  const openFormHander = (methodName, eventForUpdate) => {
+  const openFormHander = (methodName, eventForUpdate, dayItem) => {
     setShowForm(true);
-    setEvent(eventForUpdate || defaultEvent);
+    setEvent(eventForUpdate || { ...defaultEvent, date: dayItem.format("X") });
     setMethod(methodName);
   };
   const canselButtonHandler = () => {
@@ -159,6 +158,24 @@ const Calendar = () => {
       });
   };
 
+  const removeEventHandler = () => {
+    const fetchUrl = `${url}/events/${event.id}`;
+    const httpMethod = "DELETE";
+    fetch(fetchUrl, {
+      method: httpMethod,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setEvents((prevState) =>
+          prevState.filter((eventEl) => eventEl.id !== event.id)
+        );
+        canselButtonHandler();
+      });
+  };
+
   return (
     <>
       {isShowForm ? (
@@ -167,18 +184,25 @@ const Calendar = () => {
             <EventTitle
               value={event.title}
               onChange={(e) => changeEventHandler(e.target.value, "title")}
+              placeholder="Название задачи"
             />
             <EventBody
               value={event.description}
               onChange={(e) =>
                 changeEventHandler(e.target.value, "description")
               }
+              placeholder="Описание задачи"
             />
             <ButtonsWrapper>
               <ButtonCansel onClick={canselButtonHandler}>
                 Отменить
               </ButtonCansel>
               <ButtonCreate onClick={eventFetchHandler}>{method}</ButtonCreate>
+              {method === "Редактировать" ? (
+                <ButtonCreate onClick={removeEventHandler}>
+                  Удалить
+                </ButtonCreate>
+              ) : null}
             </ButtonsWrapper>
           </FormWrapper>
         </FormPositionWrapper>
