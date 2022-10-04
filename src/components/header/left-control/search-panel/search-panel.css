@@ -1,4 +1,5 @@
-.search-panel{
-    display:block;
-    padding-left: 15px;  
+.search-input{
+    width: 216px;
+    height: 32px;
+    margin-left: 10px;
 }

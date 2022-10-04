@@ -10,17 +10,14 @@
     list-style-type: none;
 }
 .left-menu .ulMenu{
-    
     list-style-type: none;
 } 
 .left-menu li{
     padding-top: 25px;
 }
-.left-menu li{
-    padding-top: 25px;
-}
 
 .left-menu .ulMenu i{
+    font-size: 20px;
     transition: 0.3s all;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -30,14 +27,10 @@
     color:rgb(56, 122, 11);
 }
 .left-menu .ulMenu .text{
-    font-size: 17px;
+    font-size: 20px;
+    line-height: 44px;
     color: rgb(16, 61, 32);
     text-decoration: none;
     font-family: sans-serif;
     transition: 0.5s all;
-}
-.left-menu .ulMenu .accordion{
-    list-style-position:inside;
-    position: absolute;
-    width: 280px;
 }

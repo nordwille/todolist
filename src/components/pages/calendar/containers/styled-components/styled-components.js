@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const CellWrapper = styled.div`
-  padding-left: 4px;
+  padding-left: 2px;
   min-width: 50px;
-  min-height: ${(props) => (props.isHeader ? 24 : 76)}px;
+  min-height: ${(props) => (props.isHeader ? 24 : 86)}px;
   background-color: ${(props) => (props.isWeekend ? "#81e2a5" : "#bddbbd")};
   font-size: 18px;
   font-weight: bold;

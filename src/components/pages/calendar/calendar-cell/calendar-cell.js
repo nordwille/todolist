@@ -29,18 +29,27 @@ const ShowDayWrapper = styled.div`
   justify-content: flex-end;
 `;
 const EventListWrapper = styled.ul`
-  margin: unset;
-  padding-left: 4px;
-  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  list-style-position: inside;
+`;
+const EventListItemWrapper = styled.li`
+  display: flex;
+  padding-right: 1px;
+  margin-bottom: 2px;
 `;
 const EventItemWrapper = styled.button`
+  position: relative;
+  flex-grow: 1;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   width: 126px;
-  border: unset;
+  border: 1px solid rgb(18, 77, 38);
   background: unset;
+  background-color: rgba(119, 160, 133, 0.404);
   color: rgb(18, 77, 38);
+  border-radius: 4px;
   margin: 0;
   padding: 0;
   text-align: left;
@@ -69,15 +78,20 @@ export const CalendarCell = ({ dayItem, today, openFormHander, events }) => {
           </ShowDayWrapper>
 
           <EventListWrapper>
-            {events.map((event) => (
-              <li key={event.id}>
+            {events.slice(0, 2).map((event) => (
+              <EventListItemWrapper key={event.id}>
                 <EventItemWrapper
                   onClick={() => openFormHander("Редактировать", event)}
                 >
                   {event.title}
                 </EventItemWrapper>
-              </li>
+              </EventListItemWrapper>
             ))}
+            {events.length > 2 ? (
+              <EventListItemWrapper key={"show more"}>
+                <EventItemWrapper>show more...</EventItemWrapper>
+              </EventListItemWrapper>
+            ) : null}
           </EventListWrapper>
         </RowInCell>
       </CellWrapper>
