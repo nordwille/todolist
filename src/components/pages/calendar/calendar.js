@@ -70,20 +70,18 @@ const ButtonsWrapper = styled("div")`
   display: flex;
   justify-content: flex-end;
 `;
-const ButtonCansel = styled("button")`
-  margin-bottom: 5px;
-  margin-right: 12px;
-  border: unset;
+const ButtonWrapper = styled("button")`
+  border: 1px solid
+    ${(props) => (props.danger ? "rgb(81, 7, 7)" : "rgb(15, 63, 31)")};
+  color: ${(props) => (props.danger ? "rgb(81, 7, 7)" : "rgb(15, 63, 31)")};
   border-radius: 4px;
   background: #bddbbd;
-  color: rgb(15, 63, 31);
-  font-weight: bold;
+  margin-right: 4px;
 `;
-const ButtonCreate = styled(ButtonCansel)``;
 
 const Calendar = () => {
   moment.updateLocale("ru", { week: { dow: 1 } });
-  //const today = moment();
+
   const [today, setToday] = useState(moment());
   const startDay = today.clone().startOf("month").startOf("week");
 
@@ -194,14 +192,16 @@ const Calendar = () => {
               placeholder="Описание задачи"
             />
             <ButtonsWrapper>
-              <ButtonCansel onClick={canselButtonHandler}>
+              <ButtonWrapper onClick={canselButtonHandler}>
                 Отменить
-              </ButtonCansel>
-              <ButtonCreate onClick={eventFetchHandler}>{method}</ButtonCreate>
+              </ButtonWrapper>
+              <ButtonWrapper onClick={eventFetchHandler}>
+                {method}
+              </ButtonWrapper>
               {method === "Редактировать" ? (
-                <ButtonCreate onClick={removeEventHandler}>
+                <ButtonWrapper danger onClick={removeEventHandler}>
                   Удалить
-                </ButtonCreate>
+                </ButtonWrapper>
               ) : null}
             </ButtonsWrapper>
           </FormWrapper>

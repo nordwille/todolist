@@ -1,3 +1,14 @@
 {
-  "events": []
+  "events": [
+    {
+      "title": "awdawd",
+      "description": "aaaaa",
+      "id": 1
+    },
+    {
+      "title": "aaa",
+      "description": "sss",
+      "id": 2
+    }
+  ]
 }

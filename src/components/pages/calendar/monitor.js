@@ -6,11 +6,11 @@ const DivWrapper = styled("div")`
   justify-content: space-between;
   background-color: #bddbbd;
   color: rgb(18, 77, 38);
-  padding: 5px;
+  padding: 0 8px 0 8px;
 `;
 
 const MonthWrapper = styled("span")`
-  font-size: 38px;
+  font-size: 36px;
 `;
 const YearWrapper = styled(MonthWrapper)`
   font-weight: bold;
